@@ -12,8 +12,7 @@ import java.util.Date;
 public class JwtUtil {
 
     // MUST be at least 32 characters
-    private final String SECRET = "mysecretkeymysecretkeymysecretkey123";
-
+    private final String SECRET = System.getenv("JWT_SECRET");
     private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
     public String generateToken(String email) {
