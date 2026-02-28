@@ -1,9 +1,17 @@
 package com.revati.farmersbuddy.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.revati.farmersbuddy.entity.Farmer;
 
-@Service
-@RequiredArgsConstructor
-public class FarmerService {
+import java.util.List;
+
+public interface FarmerService {
+
+    List<Farmer> getAllFarmers();
+
+    Farmer getFarmerById(Long id);
+
+    Farmer updateFarmer(Long id, Farmer farmer);
+
+    void deleteFarmer(Long id);
+
 }

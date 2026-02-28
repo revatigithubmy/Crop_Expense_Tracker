@@ -1,4 +1,10 @@
 package com.revati.farmersbuddy.service;
 
-public class ExpenseService {
+import com.revati.farmersbuddy.entity.Expense;
+
+import java.util.List;
+
+public interface ExpenseService {
+    void addExpense(Long cropId, Expense expense);
+    List<Expense> getExpensesByCrop(Long cropId);
 }

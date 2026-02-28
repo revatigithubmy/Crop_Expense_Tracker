@@ -1,4 +1,12 @@
 package com.revati.farmersbuddy.repository;
 
-public interface ExpenseRepository {
+import com.revati.farmersbuddy.entity.Expense;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ExpenseRepository extends JpaRepository<Expense, Long> {
+
+    List<Expense> findByCropId(Long cropId);
+
 }

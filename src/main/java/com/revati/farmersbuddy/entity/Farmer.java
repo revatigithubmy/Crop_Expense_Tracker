@@ -1,5 +1,6 @@
 package com.revati.farmersbuddy.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,7 @@ public class Farmer {
     private String role = "ROLE_FARMER";
 
     @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Crop> crops;
 
 }
