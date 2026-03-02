@@ -29,18 +29,18 @@ public class ExpenseServiceImpl implements ExpenseService {
         Crop crop = cropRepository.findById(requestDTO.getCropId())
                 .orElseThrow(() -> new RuntimeException("Crop not found"));
 
-        Expense expense = modelMapper.map(requestDTO, Expense.class);
+        Expense expense = new Expense();
+        expense.setAmount(requestDTO.getAmount());
+        expense.setExpenseDate(requestDTO.getExpenseDate());
+        expense.setExpenseType(ExpenseType.valueOf(requestDTO.getExpenseType().toUpperCase()));
         expense.setCrop(crop);
-
         Expense savedExpense = expenseRepository.save(expense);
-
         return convertToDTO(savedExpense);
     }
 
 
     @Override
     public List<ExpenseResponseDTO> getExpensesByCrop(Long cropId) {
-
         return expenseRepository.findByCropId(cropId)
                 .stream()
                 .map(this::convertToDTO)
@@ -50,37 +50,32 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public ExpenseResponseDTO getExpenseById(Long id) {
-
         Expense expense = expenseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Expense not found"));
-
         return convertToDTO(expense);
     }
 
 
     @Override
-    public ExpenseResponseDTO updateExpense(Long id,
-                                            ExpenseRequestDTO requestDTO) {
-
+    public ExpenseResponseDTO updateExpense(Long id, ExpenseRequestDTO requestDTO) {
         Expense expense = expenseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Expense not found"));
 
         Crop crop = cropRepository.findById(requestDTO.getCropId())
                 .orElseThrow(() -> new RuntimeException("Crop not found"));
 
-        expense.setExpenseType(
-                ExpenseType.valueOf(requestDTO.getExpenseType().toUpperCase())
-        );
-
         expense.setAmount(requestDTO.getAmount());
         expense.setExpenseDate(requestDTO.getExpenseDate());
-        expense.setCrop(crop);
 
+        if (requestDTO.getExpenseType() != null) {
+            expense.setExpenseType(ExpenseType.valueOf(requestDTO.getExpenseType().toUpperCase()));
+        }
+
+        expense.setCrop(crop);
         Expense updatedExpense = expenseRepository.save(expense);
 
         return convertToDTO(updatedExpense);
     }
-
 
     @Override
     public void deleteExpense(Long id) {
