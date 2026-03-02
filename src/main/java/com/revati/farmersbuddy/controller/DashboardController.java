@@ -14,22 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class DashboardController {
     private final DashboardService dashboardService;
-
-    @GetMapping("/crop/{cropId}")
-    public ResponseEntity<DashboardResponseDTO> getCropSummary(
-            @PathVariable Long cropId) {
-
-        return ResponseEntity.ok(
-                dashboardService.getCropSummary(cropId)
-        );
+    // --- CROP APIs ---
+    @GetMapping("/crop/{cropId}/total-expense")
+    public ResponseEntity<DashboardResponseDTO> getTotalExpense(@PathVariable Long cropId) {
+        return ResponseEntity.ok(dashboardService.getCropSummary(cropId));
     }
 
-    @GetMapping("/farmer/{farmerId}")
-    public ResponseEntity<DashboardResponseDTO> getFarmerSummary(
-            @PathVariable Long farmerId) {
+    @GetMapping("/crop/{cropId}/profit")
+    public ResponseEntity<DashboardResponseDTO> getCropProfit(@PathVariable Long cropId) {
+        return ResponseEntity.ok(dashboardService.getCropSummary(cropId));
+    }
 
-        return ResponseEntity.ok(
-                dashboardService.getFarmerSummary(farmerId)
-        );
+    // --- FARMER APIs ---
+    @GetMapping("/farmer/{farmerId}/total-investment")
+    public ResponseEntity<DashboardResponseDTO> getTotalInvestment(@PathVariable Long farmerId) {
+        return ResponseEntity.ok(dashboardService.getFarmerSummary(farmerId));
+    }
+
+    @GetMapping("/farmer/{farmerId}/total-profit")
+    public ResponseEntity<DashboardResponseDTO> getTotalFarmerProfit(@PathVariable Long farmerId) {
+        return ResponseEntity.ok(dashboardService.getFarmerSummary(farmerId));
     }
 }
