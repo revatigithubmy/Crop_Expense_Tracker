@@ -17,7 +17,6 @@ public class DashboardResponseDTO {
     private BigDecimal totalExpense;
     private BigDecimal totalRevenue;
     private BigDecimal totalProfit;
-    // This will hold the list of individual crop profits for the farmer
     private List<ProfitResponseDTO> cropBreakdown;
 
 }

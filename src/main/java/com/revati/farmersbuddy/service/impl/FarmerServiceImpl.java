@@ -18,7 +18,6 @@ public class FarmerServiceImpl implements FarmerService {
     private final FarmerRepository farmerRepository;
     private final ModelMapper modelMapper;
 
-
     @Override
     public List<FarmerResponseDTO> getAllFarmers() {
         return farmerRepository.findAll()

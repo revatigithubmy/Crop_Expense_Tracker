@@ -35,15 +35,12 @@ public class AuthServiceImpl implements AuthService {
                 .village(request.getVillage())
                 .role("ROLE_FARMER")
                 .build();
-
         farmerRepository.save(farmer);
-
         return "Farmer registered successfully";
     }
 
     @Override
     public AuthResponseDTO login(LoginRequestDTO request) {
-
         Farmer farmer = farmerRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("Farmer not found"));
 
@@ -53,7 +50,10 @@ public class AuthServiceImpl implements AuthService {
 
         String token = jwtUtil.generateToken(farmer.getEmail());
 
-        return new AuthResponseDTO(token);
+        return new AuthResponseDTO(token,
+                farmer.getId(),
+                farmer.getName()
+        );
     }
 
 

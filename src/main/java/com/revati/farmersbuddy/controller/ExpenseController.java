@@ -15,43 +15,33 @@ public class ExpenseController {
 
     private final ExpenseService expenseService;
 
-
     @PostMapping
     public ExpenseResponseDTO addExpense(
             @RequestBody ExpenseRequestDTO requestDTO) {
-
         return expenseService.addExpense(requestDTO);
     }
-
 
     @GetMapping("/crop/{cropId}")
     public List<ExpenseResponseDTO> getExpensesByCrop(
             @PathVariable Long cropId) {
-
         return expenseService.getExpensesByCrop(cropId);
     }
-
 
     @GetMapping("/{id}")
     public ExpenseResponseDTO getExpenseById(
             @PathVariable Long id) {
-
         return expenseService.getExpenseById(id);
     }
-
 
     @PutMapping("/{id}")
     public ExpenseResponseDTO updateExpense(
             @PathVariable Long id,
             @RequestBody ExpenseRequestDTO requestDTO) {
-
         return expenseService.updateExpense(id, requestDTO);
     }
 
-
     @DeleteMapping("/{id}")
     public String deleteExpense(@PathVariable Long id) {
-
         expenseService.deleteExpense(id);
         return "Expense deleted successfully";
     }

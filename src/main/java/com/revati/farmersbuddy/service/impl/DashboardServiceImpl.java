@@ -33,7 +33,7 @@ public class DashboardServiceImpl implements DashboardService {
         Crop crop = cropRepository.findById(cropId)
                 .orElseThrow(() -> new ResourceNotFoundException("Crop not found"));
 
-        // Calculation logic...
+
         BigDecimal totalExpense = expenseRepository.findByCropId(cropId).stream()
                 .map(Expense::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
 
@@ -45,7 +45,7 @@ public class DashboardServiceImpl implements DashboardService {
 
         return DashboardResponseDTO.builder()
                 .farmerId(crop.getFarmer().getId())
-                .cropId(cropId) // Ensure this is set here!
+                .cropId(cropId)
                 .totalExpense(totalExpense)
                 .totalRevenue(totalRevenue)
                 .totalProfit(totalProfit)

@@ -1,6 +1,5 @@
 package com.revati.farmersbuddy.controller;
 
-
 import com.revati.farmersbuddy.dto.request.LoginRequestDTO;
 import com.revati.farmersbuddy.dto.request.RegisterRequestDTO;
 import com.revati.farmersbuddy.dto.response.AuthResponseDTO;
@@ -26,7 +25,5 @@ public class AuthController {
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginRequestDTO request) {
         return ResponseEntity.ok(authService.login(request));
     }
-
-
 
 }

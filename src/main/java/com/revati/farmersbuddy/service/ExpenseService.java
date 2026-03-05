@@ -2,7 +2,6 @@ package com.revati.farmersbuddy.service;
 
 import com.revati.farmersbuddy.dto.request.ExpenseRequestDTO;
 import com.revati.farmersbuddy.dto.response.ExpenseResponseDTO;
-import com.revati.farmersbuddy.entity.Expense;
 
 
 import java.util.List;

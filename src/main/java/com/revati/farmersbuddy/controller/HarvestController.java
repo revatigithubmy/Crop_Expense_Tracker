@@ -17,14 +17,12 @@ public class HarvestController {
     public ResponseEntity<HarvestResponseDTO> addHarvest(
             @PathVariable Long cropId,
             @RequestBody HarvestRequestDTO requestDTO) {
-
         return ResponseEntity.ok(harvestService.addHarvest(cropId, requestDTO));
     }
 
     @GetMapping("/crop/{cropId}")
     public ResponseEntity<HarvestResponseDTO> getHarvestByCrop(
             @PathVariable Long cropId) {
-
         return ResponseEntity.ok(harvestService.getHarvestByCrop(cropId));
     }
 
@@ -32,13 +30,11 @@ public class HarvestController {
     public ResponseEntity<HarvestResponseDTO> updateHarvest(
             @PathVariable Long id,
             @RequestBody HarvestRequestDTO requestDTO) {
-
         return ResponseEntity.ok(harvestService.updateHarvest(id, requestDTO));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteHarvest(@PathVariable Long id) {
-
         harvestService.deleteHarvest(id);
         return ResponseEntity.ok("Harvest deleted successfully");
     }

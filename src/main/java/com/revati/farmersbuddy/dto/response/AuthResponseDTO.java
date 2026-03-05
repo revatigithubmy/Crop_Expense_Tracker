@@ -7,4 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class AuthResponseDTO {
     private String token;
+    private Long farmerId;
+    private String name;
 }

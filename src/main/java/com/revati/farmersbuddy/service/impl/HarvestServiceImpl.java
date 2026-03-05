@@ -45,10 +45,8 @@ public class HarvestServiceImpl implements HarvestService {
 
     @Override
     public HarvestResponseDTO getHarvestByCrop(Long cropId) {
-
         Harvest harvest = harvestRepository.findByCropId(cropId)
                 .orElseThrow(() -> new ResourceNotFoundException("Harvest not found"));
-
         return mapToResponse(harvest);
     }
 

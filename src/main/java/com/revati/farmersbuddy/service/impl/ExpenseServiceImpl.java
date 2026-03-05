@@ -85,8 +85,6 @@ public class ExpenseServiceImpl implements ExpenseService {
 
         expenseRepository.delete(expense);
     }
-
-
     private ExpenseResponseDTO convertToDTO(Expense expense) {
 
         ExpenseResponseDTO dto =

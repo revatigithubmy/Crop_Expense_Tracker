@@ -45,7 +45,6 @@ public class CropController {
 
         return ResponseEntity.ok(cropService.updateCrop(cropId, request));
     }
-
     @DeleteMapping("/{cropId}")
     public ResponseEntity<String> deleteCrop(
             @PathVariable Long cropId) {
